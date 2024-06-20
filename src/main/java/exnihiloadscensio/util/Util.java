@@ -87,7 +87,7 @@ public class Util {
 
     public static TextureAtlasSprite getTextureFromFluidStack(FluidStack stack)
     {
-        if(stack.getFluid() != null)
+        if(stack != null && stack.getFluid() != null)
         {
             Fluid fluid = stack.getFluid();
             
