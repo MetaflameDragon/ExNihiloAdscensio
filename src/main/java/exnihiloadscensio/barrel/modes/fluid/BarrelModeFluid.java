@@ -174,7 +174,6 @@ public class BarrelModeFluid implements IBarrelMode {
 				List<FluidTransformer> transformers = FluidTransformRegistry
 						.getFluidTransformers(barrel.getTank().getFluid().getFluid().getName());
 
-				boolean found = false;
 				for (int radius = 0; radius <= 2; radius++) {
 					for (FluidTransformer transformer : transformers) {
 						if (!BarrelLiquidBlacklistRegistry.isBlacklisted(barrel.getTier(), transformer.getOutputFluid())
@@ -194,10 +193,9 @@ public class BarrelModeFluid implements IBarrelMode {
 							mode.setOutputStack(FluidRegistry.getFluidStack(transformer.getOutputFluid(), 1000));
 
 							PacketHandler.sendNBTUpdate(barrel);
-							found = true;
+							return;
 						}
 					}
-					if (found) break;
 				}
 			}
 		}
